@@ -1,0 +1,40 @@
+#=========== MCMC input file =======================
+Path_of_input_lightcurves: 
+/Users/lendl/Work/CONANtest/CONAN_transit/
+#---------------------------------------------------
+# Input lightcurves filters baseline function
+name          fil  lamda     time   am xy fwhm sky sin group id
+Wasp-121_LC.txt       R    600.0   1     0  0  1    0   0   0     1
+# --------------------------------------------------
+#=========== jump parameters (Jump0value step lower_limit upper_limit priors) ======================
+name          fit  start_val   stepsize  low_lim up_lim  prior  value       sig_lo    sig_hi
+RpRs          y      0.12        0.01     0       1       n     0.0         0.0       0.0
+inclination   y      87.7        0.01     0       90     n     87.7        0.6       0.6
+a_Rs          y      3.8         0.1      0       1000    n     3.8         0.02      0.02
+T_0           y      10211.88    0.001    0       20000   n     0.0         0.0       0.0
+Period        n      1.27492504  0.000001 0       100     n     0.0         0.0       0.0
+Eccentricity  n      0.0         0.1      0       1       n     0.0         0.0       0.0
+omega         n      00.0        20.0     0       360     n     0.0         0.0       0.0
+#=========== Limb darkending setup ===================================================================
+# filter priors c_1          step low up  c_2        step low  up      c_3 step low up  c_4  step low up 
+R         n     0.3   0.0  0.1 0.1 0.065  0.00  0.1  0.1   0   0   0.  0.    0    0    0.  0.
+#=========== Stellar input properties ================================================================
+# parameter    value  sig_lo  sig_hi
+Radius_[Rsun]  1.44    0.03     0.03
+Mass_[Msun]    1.38    0.02     0.02
+Stellar_para_input_method:_R+rho_(Rrho),_M+rho_(Mrho),_M+R_(MR):        MR
+#=========== MCMC setup ==============================================================================
+Total_no_steps           180000
+Number_chains            15
+Number_of_processes      5
+Burnin_length            3000
+Walk_(snooker/demc/mrw)  demc
+GR_test_(y/n)            y
+Make_plots_(y/n)         y
+leastsq_(y/n)            n
+Savefile                 output_ex1.npy
+Savemodel                n
+Adapt_base_stepsize      y
+
+
+
